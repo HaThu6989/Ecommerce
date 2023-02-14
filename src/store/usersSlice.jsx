@@ -14,17 +14,15 @@ export const usersSlice = createSlice({
     },
     usersReceived(state, action) {
       state.loading = "idle";
-      state.users = action.payload.map((e) => e);
+      state.users = action.payload;
     },
   },
 });
 export const {usersLoading, usersReceived} = usersSlice.actions
 
-const fetchUsersApi = () => fetch('https://fakestoreapi.com/users').then(res=>res.json())
+const fetchUsersApi = () => fetch('https://fakestoreapi.com/users/1')
+.then(res=>res.json())
 
-// console.log("ici",fetch('https://fakestoreapi.com/users')
-// .then(res=>res.json())
-// .then(json=>console.log("json",json)))
 
 export const fetchUsers = () => async (dispatch) => {
   dispatch(usersLoading());

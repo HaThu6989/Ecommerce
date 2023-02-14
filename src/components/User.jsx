@@ -12,10 +12,11 @@ const User = () => {
     <div>
           <h2>user list</h2>
           <button onClick={() => dispatch(fetchUsers(user))}>Users list</button>
-
-        {user.map(elem => (
-            <li>{elem.username}</li>
-        ))}
+          <h2>{user.username}</h2>
+             
+            {/*.map(elem => (
+                <li>{elem.username}</li>
+            ))} */}
     </div>
   );
 };
