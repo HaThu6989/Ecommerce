@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading : "idle",
-  products : []
+  loading: "idle",
+  products: []
 };
 
 export const productsSlice = createSlice({
@@ -18,13 +18,15 @@ export const productsSlice = createSlice({
     },
   },
 });
-export const {productsLoading, productsReceived} = productsSlice.actions
+
+export const { productsLoading, productsReceived } = productsSlice.actions
 
 const fetchProductsApi = () => fetch('https://fakestoreapi.com/products').then(response => response.json())
 
 export const fetchProducts = () => async (dispatch) => {
   dispatch(productsLoading());
   const response = await fetchProductsApi()
-  console.log('response', response)
+  // console.log('response', response)
   dispatch(productsReceived(response))
 }
+
