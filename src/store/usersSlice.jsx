@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading : "idle",
+  loading: "idle",
   firstName: "John",
   lastName: "Doe",
   email: 'johndoe@example.com',
@@ -28,7 +28,7 @@ export const usersSlice = createSlice({
     },
   },
 });
-export const {usersLoading, updateUserfirstname,updateUserlastName,updateUseremail} = usersSlice.actions
+export const { usersLoading, updateUserfirstname, updateUserlastName, updateUseremail } = usersSlice.actions
 
 // const fetchUsersApi = () => fetch('https://fakestoreapi.com/users/1')
 // .then(res=>res.json())

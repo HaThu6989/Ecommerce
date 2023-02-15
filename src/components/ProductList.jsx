@@ -52,13 +52,7 @@ function ProductList() {
           </div>
           
         </div>
-        <div>
-            
-            {/* <div style={{ marginTop: "1rem" }}> */}
-              
-            {/* </div> */}
-          
-          </div>
+        
       </div>
     
     );
