@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import '../styles/DarkModeToggle.css';
+
 
 const DarkModeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -12,8 +14,12 @@ const DarkModeToggle = () => {
     : { backgroundColor: '#fff', color: '#333' };
 
   return (
-    <button onClick={handleToggleClick}>
-      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+    
+    <button
+      className={`dark-mode-toggle ${isDarkMode ? 'dark' : 'light'}`}
+      onClick={handleToggleClick}>
+      
+      {isDarkMode ? '🌞 Light Mode' : '🌑 Dark Mode'}
       <style>
         {`
           body {

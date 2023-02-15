@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #fff; */
+    height: 80px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+  }
+  
+  .nav-item {
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .padd{
+    padding: 10px 10px;
+  }
