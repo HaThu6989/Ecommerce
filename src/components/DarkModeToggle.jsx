@@ -10,8 +10,8 @@ const DarkModeToggle = () => {
   };
 
   const bodyStyle = isDarkMode
-    ? { backgroundColor: '#333', color: '#fff' }
-    : { backgroundColor: '#fff', color: '#333' };
+    ? { backgroundColor: '#333', color: '#fff', backgroundColorNav: '#201d1d'}
+    : { backgroundColor: '#fff', color: '#333', backgroundColorNav: '#f5c123'};
 
   return (
     
@@ -22,9 +22,15 @@ const DarkModeToggle = () => {
       {isDarkMode ? '🌞 Light Mode' : '🌑 Dark Mode'}
       <style>
         {`
+
           body {
             background-color: ${bodyStyle.backgroundColor};
             color: ${bodyStyle.color};
+            margin: 0;
+          }
+          .header {
+            background-color: ${bodyStyle.backgroundColorNav};
+            
           }
         `}
       </style>

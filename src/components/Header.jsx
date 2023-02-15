@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   const userFirst = useSelector((state) => state.user.firstName);
   const userLast = useSelector((state) => state.user.lastName);
+  const totalQuantity = useSelector(state => state.cart.cartTotalQuantity)
 
   return (
     <header className="header">
@@ -19,7 +20,7 @@ const Header = () => {
         
             <li className="nav-item padd"><Link to="/user"> &#x1F9D1;  {userFirst} {userLast}</Link></li>
 
-            <li className="nav-item padd">&#x1F6D2; Cart</li>
+            <li className="nav-item padd"><Link to="/cart"> &#x1F6D2; {totalQuantity} Items </Link></li>
 
             <li className="nav-item"><DarkModeToggle/></li>
 

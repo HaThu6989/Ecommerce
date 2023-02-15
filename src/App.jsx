@@ -28,15 +28,18 @@ function App() {
     
     
       <Router>
-
+      
         <Header/>
         <Routes>
+        
           <Route path="/" element={<ProductList />} />
           <Route path="/user" element={<User name={user.name} email={user.email} onSave={handleSave}/>} />
 
           <Route path="/products/:productId" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           
+        
+        
         </Routes>
       </Router>
     

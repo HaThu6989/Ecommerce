@@ -47,7 +47,7 @@ function User({ name, email }) {
             onChange={(event) => setNewEmail(event.target.value)}
           />
         </div>
-        <button className="form-submit-btn" onClick={handleSave}>
+        <button className="btn" onClick={handleSave}>
           Save
         </button>
       </div>
