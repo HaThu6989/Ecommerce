@@ -46,7 +46,7 @@ function Cart() {
             <div>
               <div className='bold'>$ {price}</div>
               <div className='bold'>Quantity: {cartQuantity}</div>
-            
+              {/* <input type="number" value={inputQuantity} onChange={(e) => handleChangeQuantityItem(product, e)} /> */}
             </div>
             <button className="btn remove" onClick={() => handleRemoveItem(product)}>Remove</button>
 
