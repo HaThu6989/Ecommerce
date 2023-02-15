@@ -1,11 +1,13 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
+import ProductDetails from "./components/ProductDetails";
 import ProductList from './components/ProductList'
 import User from './components/User'
 // import { Router } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState } from 'react';
 import Header from './components/Header';
 
+import Cart from "./components/Cart";
 
 function App() {
   const [user, setUser] = useState({
@@ -24,8 +26,6 @@ function App() {
   return (
     <div className="App">
     
-
-      
     
       <Router>
 
@@ -34,6 +34,9 @@ function App() {
           <Route path="/" element={<ProductList />} />
           <Route path="/user" element={<User name={user.name} email={user.email} onSave={handleSave}/>} />
 
+          <Route path="/products/:productId" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          
         </Routes>
       </Router>
     
@@ -43,20 +46,3 @@ function App() {
 
 export default App
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//     <DarkModeToggle/>
-//       {/* <Router>
-//         <Header/>
-//       </Router> */}
-//       {/* <Header/> */}
-//       <ProductList/>
-//       <User/>
-      
-//     </div>
-//   )
-// }
-
-// export default App
