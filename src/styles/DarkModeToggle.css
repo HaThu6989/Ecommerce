@@ -1,0 +1,25 @@
+.dark-mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 10px;
+  }
+  
+  .dark-mode-toggle.light {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .dark-mode-toggle.dark {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .toggle-text {
+    margin-left: 10px;
+  }

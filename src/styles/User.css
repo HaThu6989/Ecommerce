@@ -1,0 +1,42 @@
+.user-container {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .welcome-message {
+    margin-bottom: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    width: 50%;
+  }
+  
+  .form-group label{
+    padding-top: 8px;
+  }
+  
+  .form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    
+  }
+  
+  .form-submit-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #cfa117;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
