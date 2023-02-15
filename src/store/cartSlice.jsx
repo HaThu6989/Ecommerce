@@ -5,7 +5,6 @@ const initialState = {
   cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem("cartItems")) : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
-  quantityEachItem: 0
 };
 
 export const cartSlice = createSlice({
@@ -23,7 +22,7 @@ export const cartSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
     },
     updateQuantity(state, action) {
-      state.cartItems = state.cartItems.map(item => item.id === action.payload.id ? { ...item, cartQuantity: action.payload.quantity } : item)
+      state.cartItems = state.cartItems.map(elm => elm.id === action.payload.idItemCart ? { ...elm, cartQuantity: action.payload.quantityItemCart } : elm)
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
     },
     removeFromCart(state, action) {
@@ -32,6 +31,8 @@ export const cartSlice = createSlice({
     },
     clearCart(state, action) {
       state.cartItems = []
+      state.cartTotalQuantity = 0
+      state.cartTotalAmount = 0
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
     },
     getTotal(state, action) {

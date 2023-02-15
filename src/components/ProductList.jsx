@@ -7,7 +7,7 @@ import { productsLoading, productsReceived } from '../store/productsSlice'
 
 function ProductList() {
   const productsArr = useSelector(state => state.products.products)
-  console.log("products",productsArr)
+  const cartItemsArr = useSelector(state => state.cart.cartItems)
   const dispatch = useDispatch()
 
   const fetchProducts = async () => {
@@ -21,8 +21,9 @@ function ProductList() {
     fetchProducts();
   }, []);
 
-  const renderList = productsArr.map((product) => {
-    const { id, title, description,  image, price, category } = product;
+  const renderList = productsArr.map((elm) => {
+    const { id, title, description, image, price, category } = elm;
+
     return (
       <div key={id} className="product-col" style={{ marginTop: "1rem" }}>
         <div className="card">
@@ -32,35 +33,28 @@ function ProductList() {
           <div className="content">
             <h3>{title} <button className="category-btn" disabled>{category}</button></h3>
             <div>{description}</div>
-            
+
             <div>
-              
               <div className='space' >
                 <div className='bold'>$ {price}</div>
-                <label className='bold'>Quantity</label>
-                <input className='input' type="number" />
-                
+                {/* <label className='bold'>Quantity</label> */}
               </div>
+
               <Link to='/cart'>
-                <button className="btn" onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
+                <button className="btn" onClick={() => dispatch(addToCart(elm))}>Add to Cart</button>
               </Link>
               <Link to={`/products/${id}`}>
                 <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>En detail</button>
               </Link>
             </div>
-            
           </div>
-          
         </div>
-        
       </div>
-    
     );
   });
 
   return (
     <div>
-      {/* <h2>Products list</h2> */}
       <div className="product-row">
         {renderList}
       </div>

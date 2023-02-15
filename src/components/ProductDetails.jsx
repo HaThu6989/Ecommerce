@@ -1,6 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function ProductDetails() {
   const product = useSelector((state) => state.product.product);
@@ -17,7 +16,6 @@ function ProductDetails() {
           <div>{product.category}</div>
         </div>
       </div>
-      <Link to="/">Return to products list</Link>
     </div>
   )
 }
