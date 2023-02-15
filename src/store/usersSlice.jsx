@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading : "idle",
-  users : []
+  loading: "idle",
+  users: []
 };
 
 export const usersSlice = createSlice({
@@ -18,11 +18,10 @@ export const usersSlice = createSlice({
     },
   },
 });
-export const {usersLoading, usersReceived} = usersSlice.actions
+export const { usersLoading, usersReceived } = usersSlice.actions
 
 const fetchUsersApi = () => fetch('https://fakestoreapi.com/users/1')
-.then(res=>res.json())
-
+  .then(res => res.json())
 
 export const fetchUsers = () => async (dispatch) => {
   dispatch(usersLoading());

@@ -39,7 +39,7 @@ function ProductList() {
         </Link>
         <div style={{ marginTop: "1rem" }}>
           <label>Quantity</label>
-          <input type="number" />
+          {/* <input type="number" value={cartQuantity} /> */}
           <Link to='/cart'>
             <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
           </Link>
