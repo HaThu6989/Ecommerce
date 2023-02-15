@@ -4,8 +4,7 @@ import ProductDetails from "./components/ProductDetails";
 import ProductList from './components/ProductList'
 import User from './components/User'
 import DarkModeToggle from "./components/DarkModeToggle";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -14,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/products/:productId" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/user" element={<User />} />
         </Routes>
       </Router>
