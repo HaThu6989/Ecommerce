@@ -3,12 +3,9 @@ import { productDetailSlice } from "./productDetailSlice";
 import { cartSlice } from "./cartSlice";
 import { productsSlice } from "./productsSlice";
 import { usersSlice } from "./usersSlice";
-<<<<<<< HEAD
 import { quantitySlice } from "./quantitySlice"
-=======
 import localStorageMiddleware from "./middleware/localStorage";
 
->>>>>>> 8202f657bf6e40dda35d53d63281e7ae7675b93d
 // Export des actions
 const store = configureStore({
   reducer: {
