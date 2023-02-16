@@ -43,8 +43,10 @@ function Cart() {
 
             <div className='space' >{description}</div>
             <div className='space' >
-              <div className='bold'>$ {price}</div>
-              <label className='bold'>Quantity {cartQuantity}</label>
+              <div className='bold'>Price per unity : $ {price}</div>
+              <div className='bold'>Quantity : {cartQuantity}</div>
+              <div className='bold'>Total price : ${cartQuantity * price}</div>
+
             </div>
             <input className='input' type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
 
