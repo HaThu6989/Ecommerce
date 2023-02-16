@@ -18,10 +18,12 @@ function Cart() {
 
   const handleRemoveItem = (product) => {
     dispatch(removeFromCart(product));
+    dispatch(getTotal())
   };
 
   const handleClearCart = () => {
     dispatch(clearCart());
+    dispatch(getTotal())
   };
 
   const renderList = cartItemsArr.map((elm) => {
@@ -68,7 +70,7 @@ function Cart() {
       <div className='general-info'>
         <div className='general-info-child'>
           <h2>Hi {userFirst}!!!</h2>
-          <h3>There are {cartItemsArr.length} items in your cart</h3>
+          <h3>There are {cartItemsArr.length} {cartItemsArr.length <= 1 ? "product" : "products"}  in your cart</h3>
           <button className="btn" onClick={handleClearCart}>Clear your cart</button>
         </div>
       </div>
