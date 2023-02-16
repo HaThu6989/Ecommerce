@@ -8,6 +8,7 @@ function Cart() {
   const userFirst = useSelector((state) => state.user.firstName);
   const [inputQuantity, setInputQuantity] = useState()
   const cartItemsArr = useSelector(state => state.cart.cartItems)
+  const totalAmount = useSelector(state => state.cart.cartTotalAmount)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -64,6 +65,7 @@ function Cart() {
         <div className='general-info-child'>
           <h2>Hi {userFirst}!!!</h2>
           <h3>There are {cartItemsArr.length} {cartItemsArr.length <= 1 ? "product" : "products"}  in your cart</h3>
+          <h3>Total Price : $ {totalAmount} </h3> 
           <button className="btn" onClick={handleClearCart}>Clear your cart</button>
         </div>
       </div>
