@@ -16,6 +16,5 @@ export const quantitySlice = createSlice({
     },
 });
 
-
 export const { addValue } = quantitySlice.actions
 
