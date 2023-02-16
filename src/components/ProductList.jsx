@@ -47,7 +47,7 @@ function ProductList() {
               </div>
 
               <Link to='/cart'>
-                <button className="btn" onClick={() => dispatch(addToCart({ ...elm, idItemCart: id, quantityItemCart: Number(valueQuantity) }))}>Add to Cart</button>
+                <button className="btn" onClick={() => dispatch(addToCart({ ...elm, quantityItemCart: Number(valueQuantity) }))}>Add to Cart</button>
               </Link>
               <Link to={`/products/${id}`}>
                 <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>En detail</button>

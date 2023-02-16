@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   // If have cartItems in localStorage => add cartItems in local if not add []
   cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem("cartItems")) : [],
-  cartTotalQuantity: 0,
+  cartTotalQuantity: localStorage.getItem('cartTotalQuantity') ? JSON.parse(localStorage.getItem("cartTotalQuantity")) : 0,
   cartTotalAmount: 0,
 };
 
@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.idItemCart)
+      const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id)
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += action.payload.quantityItemCart
       } else {
