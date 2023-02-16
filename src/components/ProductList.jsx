@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 import { fetchProductDetail } from '../store/productDetailSlice'
 import { addToCart } from '../store/cartSlice'
 import { productsLoading, productsReceived } from '../store/productsSlice'
-
+import Product2 from "./Product2"
+// import { setQuantity } from '../store/quantitySlice';
+// import QuantityInput from "./QuantityInput"
 function ProductList() {
   const productsArr = useSelector(state => state.products.products)
   const cartItemsArr = useSelector(state => state.cart.cartItems)
@@ -21,9 +23,11 @@ function ProductList() {
     fetchProducts();
   }, []);
 
+  const [value, setValue] = useState(1);
   const renderList = productsArr.map((elm) => {
+    
     const { id, title, description, image, price, category } = elm;
-
+    
     return (
       <div key={id} className="product-col" style={{ marginTop: "1rem" }}>
         <div className="card">
@@ -37,7 +41,8 @@ function ProductList() {
             <div>
               <div className='space' >
                 <div className='bold'>$ {price}</div>
-                {/* <label className='bold'>Quantity</label> */}
+                <label className='bold'>Quantity</label>                
+                <Product2 id={id} />
               </div>
 
               <Link to='/cart'>
@@ -63,3 +68,6 @@ function ProductList() {
 }
 
 export default ProductList
+
+
+

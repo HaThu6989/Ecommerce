@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, clearCart, getTotal, removeFromCart } from '../store/cartSlice';
 import '../styles/Cart.css';
+import { updateValue} from '../store/quantitySlice'
 
 function Cart() {
   const userFirst = useSelector((state) => state.user.firstName);
   const [inputQuantity, setInputQuantity] = useState()
   const cartItemsArr = useSelector(state => state.cart.cartItems)
+  const quantity = useSelector(state => state.value.value)
+  console.log("quan2",quantity)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,9 +25,14 @@ function Cart() {
   };
 
   const renderList = cartItemsArr.map((elm) => {
-    const { id, title, description, image, price, category, cartQuantity } = elm;
+    const { id, title, description, image, price, category, cartQuantity  } = elm;
+    // let quantity = 4;
 
+    // cartQuantity = quantity
     const handleChangeQuantityItem = (product, e) => {
+      // console.log(product,e.target.value)
+      quantity = Number(e.target.value)
+      dispatch(updateValue(quantity));
       dispatch(updateQuantity({ idItemCart: product.id, quantityItemCart: Number(e.target.value) }))
       setInputQuantity(e.target.value)
     }
@@ -39,11 +47,12 @@ function Cart() {
             <h3>{title} <button className="category-btn" disabled>{category}</button></h3>
 
             <div className='space' >{description}</div>
-            <div>
+            <div className='space' >
               <div className='bold'>$ {price}</div>
-              <div className='bold'>Quantity: {cartQuantity}</div>
-              <input type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
+              <label className='bold'>Quantity {quantity}</label>
             </div>
+            <input className='input' type="number" min="1" value={quantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
+
             <button className="btn remove" onClick={() => handleRemoveItem(elm)}>Remove</button>
 
           </div>
