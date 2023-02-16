@@ -48,10 +48,13 @@ function Cart() {
               <div className='bold'>Price per unity : $ {price}</div>
               <div className='bold'>Quantity : {cartQuantity}</div>
               <div className='bold'>Total price : ${cartQuantity * price}</div>
+              <label className='bold'>
+                Add 
+              </label>
+              <input className='input' type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
 
             </div>
-            <input className='input' type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
-
+            
             <button className="btn remove" onClick={() => handleRemoveItem(elm)}>Remove</button>
 
           </div>
