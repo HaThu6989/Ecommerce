@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom'
 import { fetchProductDetail } from '../store/productDetailSlice'
 import { addToCart } from '../store/cartSlice'
 import { productsLoading, productsReceived } from '../store/productsSlice'
-import Product2 from "./Product2"
-// import { setQuantity } from '../store/quantitySlice';
-// import QuantityInput from "./QuantityInput"
+
 function ProductList() {
+  const [valueQuantity, setValueQuantity] = useState(1);
   const productsArr = useSelector(state => state.products.products)
   const cartItemsArr = useSelector(state => state.cart.cartItems)
   const dispatch = useDispatch()
@@ -24,12 +23,11 @@ function ProductList() {
     fetchProducts();
   }, []);
 
-  const [value, setValue] = useState(1);
+
   // Render Products List
   const renderList = productsArr.map((elm) => {
-    
     const { id, title, description, image, price, category } = elm;
-    
+
     return (
       <div key={id} className="product-col" style={{ marginTop: "1rem" }}>
         <div className="card">
@@ -43,12 +41,12 @@ function ProductList() {
             <div>
               <div className='space' >
                 <div className='bold'>$ {price}</div>
-                <label className='bold'>Quantity</label>                
-                <Product2 id={id} />
+                <label className='bold'>Quantity : {cartItemsArr.filter(cart => cart.id === elm.id).map((cart, item) => <span key={item}> {cart.cartQuantity} </span>)}</label>
+                <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
               </div>
 
               <Link to='/cart'>
-                <button className="btn" onClick={() => dispatch(addToCart(elm))}>Add to Cart</button>
+                <button className="btn" onClick={() => dispatch(addToCart({ ...elm, idItemCart: id, quantityItemCart: Number(valueQuantity) }))}>Add to Cart</button>
               </Link>
               <Link to={`/products/${id}`}>
                 <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>En detail</button>
