@@ -13,8 +13,8 @@ const store = configureStore({
     cart: cartSlice.reducer,
     user: usersSlice.reducer,
   },
-  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware),
-  middleware: [localStorageMiddleware]
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware),
+  // middleware: [localStorageMiddleware]
 });
 
 export default store;

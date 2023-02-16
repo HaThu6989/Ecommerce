@@ -15,10 +15,12 @@ function Cart() {
 
   const handleRemoveItem = (product) => {
     dispatch(removeFromCart(product));
+    dispatch(getTotal())
   };
 
   const handleClearCart = () => {
     dispatch(clearCart());
+    dispatch(getTotal())
   };
 
   const renderList = cartItemsArr.map((elm) => {
