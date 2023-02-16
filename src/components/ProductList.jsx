@@ -40,11 +40,15 @@ function ProductList() {
 
             <div>
               <div className='space' >
-                <div className='bold'>$ {price}</div>
-                <label className='bold'>Quantity </label>
-                <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
+                {/* <div className='bold'>$ {price}</div> */}
+                {/* <label className='bold'>Quantity </label> */}
+                {/* <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} /> */}
                 <div>already added {cartItemsArr.filter(cart => cart.id === elm.id).map((cart, item) => <span key={item}> {cart.cartQuantity} </span>)} times</div>
                 
+                <div className='bold'>Price : $ {price}</div>
+                <div className='bold'>Quantity in cart : {cartItemsArr.filter(cart => cart.id === elm.id).map((cart, item) => <span key={item}> {cart.cartQuantity} </span>)}</div>
+                <label className='bold'>Add <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
+                </label>
               </div>
 
               <Link to='/cart'>
