@@ -1,14 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const  quantitySlice = createSlice({
-  name: 'value',
-  initialState: { value: null },
-  reducers: {
-    updateValue: (state, action) => {
-      state.value = action.payload;
-    }
-  }
+const initialState = {
+    values: [],
+    valueById: {},
+};
+export const quantitySlice = createSlice({
+    name: 'quantitySlice',
+    initialState,
+    reducers: {
+      addValue: (state, action) => {
+        const { id, value } = action.payload;
+        state.values.push(id);
+        state.valueById[id] = value;
+      },
+    },
 });
 
-export const { updateValue } = quantitySlice.actions;
-// export default quantitySlice.reducer;
+
+export const { addValue } = quantitySlice.actions
+

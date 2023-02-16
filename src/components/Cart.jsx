@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, clearCart, getTotal, removeFromCart } from '../store/cartSlice';
 import '../styles/Cart.css';
-import { updateValue} from '../store/quantitySlice'
+// import { updateValue} from '../store/quantitySlice'
 
 function Cart() {
-  const userFirst = useSelector((state) => state.user.firstName);
-  const [inputQuantity, setInputQuantity] = useState()
-  const cartItemsArr = useSelector(state => state.cart.cartItems)
   const quantity = useSelector(state => state.value.value)
+
+  const userFirst = useSelector((state) => state.user.firstName);
+  const [inputQuantity, setInputQuantity] = useState(quantity)
+  const cartItemsArr = useSelector(state => state.cart.cartItems)
   console.log("quan2",quantity)
   const dispatch = useDispatch()
 
@@ -28,13 +29,9 @@ function Cart() {
 
   const renderList = cartItemsArr.map((elm) => {
     const { id, title, description, image, price, category, cartQuantity  } = elm;
-    // let quantity = 4;
-
-    // cartQuantity = quantity
+    
     const handleChangeQuantityItem = (product, e) => {
-      // console.log(product,e.target.value)
-      quantity = Number(e.target.value)
-      dispatch(updateValue(quantity));
+
       dispatch(updateQuantity({ idItemCart: product.id, quantityItemCart: Number(e.target.value) }))
       setInputQuantity(e.target.value)
     }
@@ -51,9 +48,9 @@ function Cart() {
             <div className='space' >{description}</div>
             <div className='space' >
               <div className='bold'>$ {price}</div>
-              <label className='bold'>Quantity {quantity}</label>
+              <label className='bold'>Quantity {inputQuantity}</label>
             </div>
-            <input className='input' type="number" min="1" value={quantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
+            <input className='input' type="number" min="1" value={inputQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
 
             <button className="btn remove" onClick={() => handleRemoveItem(elm)}>Remove</button>
 
