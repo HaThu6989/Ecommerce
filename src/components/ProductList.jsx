@@ -41,15 +41,17 @@ function ProductList() {
             <div>
               <div className='space' >
                 <div className='bold'>$ {price}</div>
-                <label className='bold'>Quantity : {cartItemsArr.filter(cart => cart.id === elm.id).map((cart, item) => <span key={item}> {cart.cartQuantity} </span>)}</label>
+                <label className='bold'>Quantity </label>
                 <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
+                <div>already added {cartItemsArr.filter(cart => cart.id === elm.id).map((cart, item) => <span key={item}> {cart.cartQuantity} </span>)} times</div>
+                
               </div>
 
               <Link to='/cart'>
                 <button className="btn" onClick={() => dispatch(addToCart({ ...elm, idItemCart: id, quantityItemCart: Number(valueQuantity) }))}>Add to Cart</button>
               </Link>
               <Link to={`/products/${id}`}>
-                <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>En detail</button>
+                <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>In details</button>
               </Link>
             </div>
           </div>

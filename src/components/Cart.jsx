@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, clearCart, getTotal, removeFromCart } from '../store/cartSlice';
 import '../styles/Cart.css';
+import { Link } from 'react-router-dom'
 // import { updateValue } from '../store/quantitySlice'
 
 function Cart() {
@@ -53,8 +54,10 @@ function Cart() {
 
           </div>
         </div>
+        
 
       </div>
+      
 
     );
   });
@@ -70,6 +73,12 @@ function Cart() {
         </div>
       </div>
       {renderList}
+      
+      <div className="container">
+        <Link to='/'>
+          <button className="btn">Back to store</button>
+        </Link>
+      </div>
     </div>
   )
 }

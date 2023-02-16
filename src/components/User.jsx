@@ -16,7 +16,7 @@ function User({ name, email }) {
   }
 
   return (
-    <div className="user-container">
+    <div className="container">
       <h2 className="welcome-message">Hi, {firstName}!</h2>
       <h4 className="welcome-message">Costumize your profile here</h4>
       <div className="user-form">
