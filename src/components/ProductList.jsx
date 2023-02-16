@@ -10,6 +10,7 @@ function ProductList() {
   const cartItemsArr = useSelector(state => state.cart.cartItems)
   const dispatch = useDispatch()
 
+  // Fetch Products List
   const fetchProducts = async () => {
     dispatch(productsLoading());
     const response = await fetch("https://fakestoreapi.com/products")
@@ -21,6 +22,7 @@ function ProductList() {
     fetchProducts();
   }, []);
 
+  // Render Products List
   const renderList = productsArr.map((elm) => {
     const { id, title, description, image, price, category } = elm;
 
@@ -37,7 +39,7 @@ function ProductList() {
             <div>
               <div className='space' >
                 <div className='bold'>$ {price}</div>
-                {/* <label className='bold'>Quantity</label> */}
+                <label className='bold'>Quantity</label>
               </div>
 
               <Link to='/cart'>

@@ -14,7 +14,6 @@ const store = configureStore({
     user: usersSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware),
-  // middleware: [localStorageMiddleware]
 });
 
 export default store;
