@@ -8,8 +8,6 @@ function Cart() {
   const userFirst = useSelector((state) => state.user.firstName);
   const [inputQuantity, setInputQuantity] = useState()
   const cartItemsArr = useSelector(state => state.cart.cartItems)
-  // let quantity = useSelector(state => state.value.value)
-  console.log("cartItemsArr", cartItemsArr)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -28,13 +26,8 @@ function Cart() {
 
   const renderList = cartItemsArr.map((elm) => {
     const { id, title, description, image, price, category, cartQuantity } = elm;
-    // let quantity = 4;
 
-    // cartQuantity = quantity
     const handleChangeQuantityItem = (product, e) => {
-      // console.log(product,e.target.value)
-      // quantity = Number(e.target.value)
-      // dispatch(updateValue(quantity));
       dispatch(updateQuantity({ idItemCart: product.id, quantityItemCart: Number(e.target.value) }))
       setInputQuantity(e.target.value)
     }
