@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, clearCart, getTotal, removeFromCart } from '../store/cartSlice';
 import '../styles/Cart.css';
+import { Link } from 'react-router-dom'
 // import { updateValue } from '../store/quantitySlice'
 
 function Cart() {
@@ -47,16 +48,21 @@ function Cart() {
               <div className='bold'>Price per unity : $ {price}</div>
               <div className='bold'>Quantity : {cartQuantity}</div>
               <div className='bold'>Total price : ${cartQuantity * price}</div>
+              <label className='bold'>
+                Add 
+              </label>
+              <input className='input' type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
 
             </div>
-            <input className='input' type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
-
+            
             <button className="btn remove" onClick={() => handleRemoveItem(elm)}>Remove</button>
 
           </div>
         </div>
+        
 
       </div>
+      
 
     );
   });
@@ -72,6 +78,12 @@ function Cart() {
         </div>
       </div>
       {renderList}
+      
+      <div className="container">
+        <Link to='/'>
+          <button className="btn">Back to store</button>
+        </Link>
+      </div>
     </div>
   )
 }

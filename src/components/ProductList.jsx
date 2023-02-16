@@ -51,13 +51,15 @@ function ProductList() {
                 </div>
                 <label className='bold'>Add <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
                 </label>
+                <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
+
               </div>
 
               <Link to='/cart'>
                 <button className="btn" onClick={() => dispatch(addToCart({ ...elm, quantityItemCart: Number(valueQuantity) }))}>Add to Cart</button>
               </Link>
               <Link to={`/products/${id}`}>
-                <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>En detail</button>
+                <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>In details</button>
               </Link>
             </div>
           </div>
