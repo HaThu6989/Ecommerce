@@ -19,21 +19,18 @@ export const cartSlice = createSlice({
         const tempsProduct = { ...action.payload, cartQuantity: 1 }
         state.cartItems.push(tempsProduct)
       }
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
     },
     updateQuantity(state, action) {
       state.cartItems = state.cartItems.map(elm => elm.id === action.payload.idItemCart ? { ...elm, cartQuantity: action.payload.quantityItemCart } : elm)
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
     },
     removeFromCart(state, action) {
       state.cartItems = state.cartItems.filter(elm => elm.id !== action.payload.id)
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+
     },
     clearCart(state, action) {
       state.cartItems = []
       state.cartTotalQuantity = 0
       state.cartTotalAmount = 0
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
     },
     getTotal(state, action) {
       let { total, quantity } = state.cartItems.reduce(
@@ -47,8 +44,6 @@ export const cartSlice = createSlice({
       total = parseFloat(total.toFixed(2));
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
-      localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
-      localStorage.setItem("cartTotalQuantity", JSON.stringify(state.cartTotalQuantity))
     }
   },
 });
