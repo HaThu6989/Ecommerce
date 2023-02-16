@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { productDetailSlice } from "./productDetailSlice";
-import { cartSlice } from "./cartSlice";
+import { cartSlice, getTotal } from "./cartSlice";
 import { productsSlice } from "./productsSlice";
 import { usersSlice } from "./usersSlice";
 import localStorageMiddleware from "./middleware/localStorage";
@@ -15,5 +15,7 @@ const store = configureStore({
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware),
 });
+
+store.dispatch(getTotal())
 
 export default store;
