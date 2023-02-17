@@ -1,9 +1,55 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, clearCart, getTotal, removeFromCart } from '../store/cartSlice';
-import '../styles/Cart.css';
+// import '../styles/Cart.css';
 import { Link } from 'react-router-dom'
-// import { updateValue } from '../store/quantitySlice'
+import styled from 'styled-components';
+
+const Button = styled.button`
+  padding: 0.8rem 1rem;
+  margin: 1rem 1rem;
+  font-size: ${props => props.size ?? 1.1 }rem;
+  background: ${props => props.primary ? "palevioletred" : props => props.secondary ? "tomato" : "white" };
+  color: ${props => props.primary ? "white" : props => props.secondary ? "black" : "palevioletred" };
+  border: none;
+  border-radius: 0.35rem;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  :hover {
+      transform: scale(1.05);
+  }
+  :active{
+      transform: scale(0.9);
+  }
+;`
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Image = styled.div`
+  width: 192px;
+  height: 251px;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+`;
+
+const Img = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+`;
+
+const ProductCard = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px;
+`;
+
+const Content = styled.div`
+  flex: 1;
+`;
 
 function Cart() {
   const userFirst = useSelector((state) => state.user.firstName);
@@ -35,12 +81,12 @@ function Cart() {
     }
 
     return (
-      <div key={id} className="product-card" style={{ marginTop: "1rem" }}>
-        <div className="card">
-          <div className="image">
-            <img src={image} alt={title} />
-          </div>
-          <div className="content">
+      <ProductCard key={id}  style={{ marginTop: "1rem" }}>
+        <Card>
+          <Image>
+            <Img src={image} alt={title} />
+          </Image>
+          <Content>
             <h3>{title} <button className="category-btn" disabled>{category}</button></h3>
 
             <div className='space' >{description}</div>
@@ -55,13 +101,13 @@ function Cart() {
 
             </div>
             
-            <button className="btn remove" onClick={() => handleRemoveItem(elm)}>Remove</button>
+            <Button onClick={() => handleRemoveItem(elm)}>Remove</Button>
 
-          </div>
-        </div>
+          </Content>
+        </Card>
         
 
-      </div>
+      </ProductCard>
       
 
     );
