@@ -16,7 +16,6 @@ export const Nav = styled.nav`
     display: flex;
     align-items: center;
     width: 100%;
-    ${'' /* max-width: 1200px; */}
     padding: 0 20px;
 `;
 
