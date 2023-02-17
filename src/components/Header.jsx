@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import DarkModeToggle from './DarkModeToggle';
-import '../styles/Header.css';
-import { Link } from 'react-router-dom';
+
+import {Head,Nav,Logo,NavList,NavItem,Pad, StyledLink} from '../styles/Header'
+// import {Header,Nav,Logo,NavList,NavItem,Pad} from '../styles/DarkModeToggle'
+
 
 const Header = () => {
   const userFirst = useSelector((state) => state.user.firstName);
@@ -9,24 +11,24 @@ const Header = () => {
   const totalQuantity = useSelector(state => state.cart.cartTotalQuantity)
 
   return (
-    <header className="header">
-      <nav className="nav">
-        <div className="logo">
-          <Link to="/">
+    <header>
+      <Nav>
+        <Logo>
+          <StyledLink to="/">
             ESHOP
-          </Link>
-        </div>
-        <ul className="nav-list">
+          </StyledLink>
+        </Logo>
+        <NavList>
 
-          <li className="nav-item padd"><Link to="/user"> &#x1F9D1;  {userFirst} {userLast}</Link></li>
+          <Pad><StyledLink to="/user"> &#x1F9D1;  {userFirst} {userLast}</StyledLink></Pad>
 
-          <li className="nav-item padd"><Link to="/cart"> &#x1F6D2; {totalQuantity} {totalQuantity <= 1 ? "Item" : "Items"} </Link></li>
+          <Pad><StyledLink to="/cart"> &#x1F6D2; {totalQuantity} {totalQuantity <= 1 ? "Item" : "Items"} </StyledLink></Pad>
 
-          <li className="nav-item"><DarkModeToggle /></li>
+          <NavItem><DarkModeToggle /></NavItem>
 
 
-        </ul>
-      </nav>
+        </NavList>
+      </Nav>
     </header>
   );
 };

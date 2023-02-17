@@ -3,15 +3,15 @@ import styled from 'styled-components';
 export const Card = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 10px 49px 21px 0px;
 `;
 
 export const Image = styled.div`
-  width: 192px;
-  height: 251px;
-  margin-right: 1rem;
+  width: 217px;
+  height: 215px;
   border-radius: 0.5rem;
   overflow: hidden;
-
+  margin-right: 17px;
 `;
 export const Img = styled.img`
     width: 100%;
@@ -32,24 +32,17 @@ export const Content = styled.div`
 export const CategoryButton = styled.button`
   font-size: 0.8rem;
   padding-top: 0%;
-  margin-right: 1rem;
+  margin-right: 0.1rem;
 `;
 
 export const RemoveButton = styled.button`
   margin: 1rem auto;
-`;
-
-export const BoldText = styled.span`
-  font-weight: bold;
-  padding-bottom: 10px;
-`;
-
-export const Input = styled.input`
-  margin-top: 10px;
-  width: 45px;
-  height: 25px;
-  font-size: 9px;
-  margin-left: 10px;
+  margin: 10px 10px 0px 0px ;
+  padding: 10px 20px;
+  border: none;
+  background-color: #f5c123;
+  border-radius: 5px;
+  cursor: pointer;
 `;
 
 export const GeneralInfo = styled.div`
@@ -64,7 +57,7 @@ export const ProductRow = styled.div`
   @media only screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
-    margin: -0.5rem;
+    margin: 1.5rem;
   }
 `;
 

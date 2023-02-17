@@ -1,56 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, clearCart, getTotal, removeFromCart } from '../store/cartSlice';
-// import '../styles/Cart.css';
 import { Link } from 'react-router-dom'
-import styled from 'styled-components';
 
-const Button = styled.button`
-  padding: 0.8rem 1rem;
-  margin: 1rem 1rem;
-  font-size: ${props => props.size ?? 1.1 }rem;
-  background: ${props => props.primary ? "palevioletred" : props => props.secondary ? "tomato" : "white" };
-  color: ${props => props.primary ? "white" : props => props.secondary ? "black" : "palevioletred" };
-  border: none;
-  border-radius: 0.35rem;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-  :hover {
-      transform: scale(1.05);
-  }
-  :active{
-      transform: scale(0.9);
-  }
-;`
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const Image = styled.div`
-  width: 192px;
-  height: 251px;
-  margin-right: 1rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-`;
-
-const Img = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-`;
-
-const ProductCard = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 10px;
-`;
-
-const Content = styled.div`
-  flex: 1;
-`;
-
+import { Card, Image, Img, ProductCard, Content, CategoryButton ,RemoveButton ,GeneralInfo ,GeneralInfoChild ,ProductRow ,ProductColumn } from '../styles/Cart'
+import { Button, BoldText, Input, Space, Label, Container} from '../styles/Global'
 function Cart() {
   const userFirst = useSelector((state) => state.user.firstName);
   const [inputQuantity, setInputQuantity] = useState()
@@ -81,27 +35,28 @@ function Cart() {
     }
 
     return (
-      <ProductCard key={id}  style={{ marginTop: "1rem" }}>
+      <ProductCard key={id} style={{ marginTop: "1rem" }}>
         <Card>
           <Image>
             <Img src={image} alt={title} />
           </Image>
           <Content>
-            <h3>{title} <button className="category-btn" disabled>{category}</button></h3>
+            <h3>{title} <CategoryButton disabled>{category}</CategoryButton></h3>
 
-            <div className='space' >{description}</div>
-            <div className='space' >
-              <div className='bold'>Price per unity : $ {price}</div>
-              <div className='bold'>Quantity : {cartQuantity}</div>
-              <div className='bold'>Total price : ${cartQuantity * price}</div>
-              <label className='bold'>
-                Add 
-              </label>
-              <input className='input' type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
-
-            </div>
+            <Space>{description}</Space>
+            <Space>
             
-            <Button onClick={() => handleRemoveItem(elm)}>Remove</Button>
+              <BoldText className='bold'>Price per unity : $ {price}</BoldText>
+              <BoldText className='bold'>Quantity : {cartQuantity}</BoldText>
+              <BoldText className='bold'>Total price : ${cartQuantity * price}</BoldText>
+              <Label>
+                Add 
+              </Label>
+              <Input type="number" min="1" value={cartQuantity} onChange={(e) => handleChangeQuantityItem(elm, e)} />
+
+            </Space>
+            
+            <RemoveButton className="btn remove" onClick={() => handleRemoveItem(elm)}>Remove</RemoveButton>
 
           </Content>
         </Card>
@@ -115,21 +70,21 @@ function Cart() {
 
   return (
     <div>
-      <div className='general-info'>
-        <div className='general-info-child'>
+      <GeneralInfo>
+        <GeneralInfoChild>
           <h2>Hi {userFirst}!!!</h2>
           <h3>There are {cartItemsArr.length} {cartItemsArr.length <= 1 ? "product" : "products"}  in your cart</h3>
           <h3>Total Price : $ {totalAmount} </h3>
-          <button className="btn" onClick={handleClearCart}>Clear your cart</button>
-        </div>
-      </div>
+          <Button onClick={handleClearCart}>Clear your cart</Button>
+        </GeneralInfoChild>
+      </GeneralInfo>
       {renderList}
       
-      <div className="container">
+      <Container>
         <Link to='/'>
-          <button className="btn">Back to store</button>
+          <Button>Back to store</Button>
         </Link>
-      </div>
+      </Container>
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUserfirstname, updateUserlastName, updateUseremail } from '../store/usersSlice';
 import React, { useState } from 'react';
-import '../styles/User.css';
+import { WelcomeMessage, WelcomeMessage2, FormGroup, Input} from '../styles/User'
+import {Button, Label, Container} from '../styles/Global'
 
 function User({ name, email }) {
   const [firstName, setFirstName] = useState(name.first);
@@ -16,42 +17,42 @@ function User({ name, email }) {
   }
 
   return (
-    <div className="container">
-      <h2 className="welcome-message">Hi, {firstName}!</h2>
-      <h4 className="welcome-message">Costumize your profile here</h4>
-      <div className="user-form">
-        <div className="form-group">
-          <label htmlFor="firstName">First Name:</label>
-          <input
+    <Container>
+      <WelcomeMessage>Hi, {firstName}!</WelcomeMessage>
+      <WelcomeMessage2>Costumize your profile here</WelcomeMessage2>
+      <div>
+        <FormGroup>
+          <Label htmlFor="firstName">First Name:</Label>
+          <Input
             id="firstName"
             type="text"
             value={firstName}
             onChange={(event) => setFirstName(event.target.value)}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name:</label>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="lastName">Last Name:</Label>
+          <Input
             id="lastName"
             type="text"
             value={lastName}
             onChange={(event) => setLastName(event.target.value)}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="email">Email Address:</Label>
+          <Input
             id="email"
             type="email"
             value={newEmail}
             onChange={(event) => setNewEmail(event.target.value)}
           />
-        </div>
-        <button className="btn" onClick={handleSave}>
+        </FormGroup>
+        <Button className="btn" onClick={handleSave}>
           Save
-        </button>
+        </Button>
       </div>
-    </div>
+    </Container>
   );
 }
 

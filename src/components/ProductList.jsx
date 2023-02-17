@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchProductDetail } from '../store/productDetailSlice'
 import { addToCart } from '../store/cartSlice'
 import { productsLoading, productsReceived } from '../store/productsSlice'
-const Card = styled.div`
-  display: flex;
-  flex-direction: row;
-}
-`;
+import {Card, Image, Img, Content, CategoryButton, ProductRow, ProductColumn} from "../styles/Cart"
+import {Button, BoldText, Input, Space, Label} from '../styles/Global'
+
 function ProductList() {
   const [valueQuantity, setValueQuantity] = useState(1);
   const productsArr = useSelector(state => state.products.products)
@@ -34,48 +31,46 @@ function ProductList() {
     const { id, title, description, image, price, category } = elm;
 
     return (
-      <div key={id} className="product-col" style={{ marginTop: "1rem" }}>
+      <ProductColumn key={id}>
         <Card>
-          <div className="image">
-            <img src={image} alt={title} />
-          </div>
-          <div className="content">
-            <h3>{title} <button className="category-btn" disabled>{category}</button></h3>
+          <Image>
+            <Img src={image} alt={title} />
+          </Image>
+          <Content>
+            <h3>{title} <CategoryButton disabled>{category}</CategoryButton></h3>
             <div>{description}</div>
-
-            <div>
-              <div className='space' >
-                <div className='bold'>Price : $ {price}</div>
-                <div className='bold'>
+              <Space>
+                <BoldText>Price : $ {price}</BoldText>
+                <BoldText>
                   Quantity in cart :
                   {cartItemsArr
                     .filter(cart => cart.id === elm.id)
                     .map((cart, item) => {
                       return <span key={item}> {cart.cartQuantity === null ? 0 : cart.cartQuantity} </span>
-                    })}
-                </div>
-                <label className='bold'>Add <input className='input' type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
-                </label>
-              </div>
+                  })}
+                </BoldText>
+                <Label className='bold'>Add </Label>
+                <Input type="number" min="1" value={valueQuantity} onChange={e => setValueQuantity(e.target.value)} />
+              </Space>
 
               <Link to='/cart'>
-                <button className="btn" onClick={() => dispatch(addToCart({ ...elm, quantityItemCart: Number(valueQuantity) }))}>Add to Cart</button>
+                <Button onClick={() => dispatch(addToCart({ ...elm, quantityItemCart: Number(valueQuantity) }))}>Add to Cart</Button>
               </Link>
               <Link to={`/products/${id}`}>
-                <button className="btn" onClick={() => dispatch(fetchProductDetail(id))}>En detail</button>
+                <Button onClick={() => dispatch(fetchProductDetail(id))}>En detail</Button>
               </Link>
-            </div>
-          </div>
+            
+          </Content>
         </Card>
-      </div>
+      </ProductColumn>
     );
   });
 
   return (
     <div>
-      <div className="product-row">
+      <ProductRow>
         {renderList}
-      </div>
+      </ProductRow>
     </div>
   )
 }

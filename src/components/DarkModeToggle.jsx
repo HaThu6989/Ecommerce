@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/DarkModeToggle.css';
+import {DarkMode,GlobalStyle} from '../styles/DarkModeToggle'
 
 
 const DarkModeToggle = () => {
@@ -15,26 +15,13 @@ const DarkModeToggle = () => {
 
   return (
     
-    <button
+    <DarkMode
       className={`dark-mode-toggle ${isDarkMode ? 'dark' : 'light'}`}
       onClick={handleToggleClick}>
       
       {isDarkMode ? '🌞 Light Mode' : '🌑 Dark Mode'}
-      <style>
-        {`
-
-          body {
-            background-color: ${bodyStyle.backgroundColor};
-            color: ${bodyStyle.color};
-            margin: 0;
-          }
-          .header {
-            background-color: ${bodyStyle.backgroundColorNav};
-            
-          }
-        `}
-      </style>
-    </button>
+      <GlobalStyle bodyStyle={bodyStyle} > </GlobalStyle>
+    </DarkMode>
   );
 };
 
