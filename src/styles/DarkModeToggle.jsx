@@ -33,6 +33,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5c123;
+    height: 80px;
+    border-bottom: 1px solid #ccc;
     background-color: ${props => props.bodyStyle.backgroundColorNav};
   }
 `;
