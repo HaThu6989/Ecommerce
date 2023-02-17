@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchProductDetail } from '../store/productDetailSlice'
 import { addToCart } from '../store/cartSlice'
 import { productsLoading, productsReceived } from '../store/productsSlice'
-
+const Card = styled.div`
+  display: flex;
+  flex-direction: row;
+}
+`;
 function ProductList() {
   const [valueQuantity, setValueQuantity] = useState(1);
   const productsArr = useSelector(state => state.products.products)
@@ -30,7 +35,7 @@ function ProductList() {
 
     return (
       <div key={id} className="product-col" style={{ marginTop: "1rem" }}>
-        <div className="card">
+        <Card>
           <div className="image">
             <img src={image} alt={title} />
           </div>
@@ -61,7 +66,7 @@ function ProductList() {
               </Link>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     );
   });
