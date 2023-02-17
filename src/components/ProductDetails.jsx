@@ -1,33 +1,35 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import {Content,Image,Img,CategoryButton} from '../styles/Cart'
+import { Button,Space, BoldText, CenterContainer,CenterCard} from '../styles/Global'
 
 function ProductDetails() {
   const product = useSelector((state) => state.product.product);
   return (
     <div>
-      <h2 className="center">Product detail</h2>
-      <div className="card center">
-        <div className="image">
-          <img src={product.image} alt={product.title} />
-        </div>
-        <div className="content">
-          <h3>{product.title} <button className="category-btn" disabled>{product.category}</button></h3>
+      <CenterContainer>Product detail</CenterContainer>
+      <CenterCard>
+        <Image>
+          <Img src={product.image} alt={product.title} />
+        </Image>
+        <Content>
+          <h3>{product.title} <CategoryButton disabled>{product.category}</CategoryButton></h3>
           {/* <h3 >{product.title}</h3> */}
           <div>{product.description}</div>
-          <div className='space' >
-            <div className='bold'>$ {product.price}</div>
-          </div>
+          <Space>
+            <BoldText>$ {product.price}</BoldText>
+          </Space>
           
           {/* <div>{product.category}</div> */}
           
-        </div>
-      </div>
-      <div className="center">
+        </Content>
+      </CenterCard>
+      <CenterContainer>
         <Link to='/'>
-          <button className="btn">Back to store</button>
+          <Button>Back to store</Button>
         </Link>
-      </div>
+      </CenterContainer>
           
     </div>
   )

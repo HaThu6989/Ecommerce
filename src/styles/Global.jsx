@@ -9,10 +9,16 @@ export const RootContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const CenterContainer = styled.div`
+export const CenterContainer = styled.h2`
   margin: auto;
   width: 50%;
   padding: 10px;
+`;
+
+export const CenterCard = styled.h2`
+  margin: auto;
+  width: 50%;
+  padding: 2em;
 `;
 
 export const Button = styled.button`
