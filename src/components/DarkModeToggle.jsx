@@ -20,7 +20,7 @@ const DarkModeToggle = () => {
       onClick={handleToggleClick}>
       
       {isDarkMode ? '🌞 Light Mode' : '🌑 Dark Mode'}
-      <GlobalStyle bodyStyle={bodyStyle} > </GlobalStyle>
+      <GlobalStyle bodyStyle={bodyStyle} />
     </DarkMode>
   );
 };

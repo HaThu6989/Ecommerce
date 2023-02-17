@@ -29,15 +29,3 @@ export const usersSlice = createSlice({
   },
 });
 export const { usersLoading, updateUserfirstname, updateUserlastName, updateUseremail } = usersSlice.actions
-
-// const fetchUsersApi = () => fetch('https://fakestoreapi.com/users/1')
-// .then(res=>res.json())
-
-
-// export const fetchUsers = () => async (dispatch) => {
-//   dispatch(usersLoading());
-//   const response = await fetchUsersApi()
-
-//   console.log('response', response)
-//   dispatch(usersReceived(response))
-// }
