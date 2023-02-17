@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux";
 import DarkModeToggle from './DarkModeToggle';
-
 import {Head,Nav,Logo,NavList,NavItem,Pad, StyledLink} from '../styles/Header'
-// import {Header,Nav,Logo,NavList,NavItem,Pad} from '../styles/DarkModeToggle'
 
 
 const Header = () => {
